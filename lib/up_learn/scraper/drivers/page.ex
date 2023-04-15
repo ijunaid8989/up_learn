@@ -19,11 +19,12 @@ defmodule UpLearn.Scraper.Drivers.Page do
 
   @impl true
   def get_data(%{base_url: base_url} = config) do
-    with {:ok, response} <- Client.get(base_url, [], http_otps(config)) do
-      status = get_status_from_response(response)
-      :ok = dispatch_info(status, response.body)
-      {:ok, Response.new(response, status)}
-    else
+    case Client.get(base_url, [], http_otps(config)) do
+      {:ok, response} ->
+        status = get_status_from_response(response)
+        :ok = dispatch_info(status, response.body)
+        {:ok, Response.new(response, status)}
+
       {:error, response} ->
         status = get_status_from_response(response)
         :ok = dispatch_info(status, response.reason)

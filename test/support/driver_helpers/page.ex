@@ -1,4 +1,6 @@
 defmodule UpLearn.DriverHelpers.Page do
+  @moduledoc false
+
   def driver_config do
     %{
       base_url: "http://localhost:4040",
@@ -40,12 +42,12 @@ defmodule UpLearn.DriverHelpers.Page do
   <h1>Page not found</h1>
   """
 
-  def get_data_response() do
+  def get_data_response do
     @html_with_data_attributes
     |> Jason.encode!()
   end
 
-  def get_data_not_found_response() do
+  def get_data_not_found_response do
     @html_with_404_not_found
     |> Jason.encode!()
   end

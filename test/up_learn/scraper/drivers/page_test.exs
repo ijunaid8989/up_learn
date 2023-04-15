@@ -7,8 +7,8 @@ defmodule UpLearn.Scraper.Drivers.PageTest do
   alias UpLearn
   alias UpLearn.Scraper.Drivers.Page
   alias UpLearn.Scraper.Drivers.Page.Client
-  alias UpLearn.Scraper.Response
   alias UpLearn.Scraper.Parser
+  alias UpLearn.Scraper.Response
 
   setup do
     {:ok, config} =

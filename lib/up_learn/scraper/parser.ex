@@ -1,4 +1,6 @@
 defmodule UpLearn.Scraper.Parser do
+  @moduledoc false
+
   alias UpLearn.ParsedDocument
 
   @spec parse(binary) :: {:ok, Floki.html_tree()} | {:error, String.t()}

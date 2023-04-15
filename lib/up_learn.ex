@@ -8,10 +8,11 @@ defmodule UpLearn do
 
   import UpLearn.Scraper.Helpers
 
-  alias UpLearn.Provider.Configuration
-  alias UpLearn.Scraper.{Parser, Response}
-  alias UpLearn.ParsedDocument
   alias Ecto.Changeset
+  alias UpLearn.ParsedDocument
+  alias UpLearn.Provider.Configuration
+  alias UpLearn.Scraper.Parser
+  alias UpLearn.Scraper.Response
 
   @spec fetch(binary) :: UpLearn.ParsedDocument.t()
   def fetch(url) do
