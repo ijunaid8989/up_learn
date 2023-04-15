@@ -23,7 +23,9 @@ defmodule UpLearn.MixProject do
   defp deps do
     [
       {:jason, "~> 1.4"},
-      {:httpoison, "~> 2.0"}
+      {:httpoison, "~> 2.0"},
+      {:ecto, "~> 3.8"},
+      {:floki, "~> 0.34.0"}
     ]
   end
 end
