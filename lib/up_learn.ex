@@ -13,6 +13,7 @@ defmodule UpLearn do
   alias UpLearn.ParsedDocument
   alias Ecto.Changeset
 
+  @spec fetch(binary) :: UpLearn.ParsedDocument.t()
   def fetch(url) do
     with {:ok, driver_config} <- get_driver_config(url),
          driver = module_name([UpLearn.Scraper.Drivers, "page"]),
@@ -24,14 +25,8 @@ defmodule UpLearn do
     end
   end
 
-  defp get_driver_config(url) do
-    %Configuration{}
-    |> Configuration.changeset(%{base_url: url})
-    |> process_changeset()
+  @spec get_driver_config(binary) :: {:ok, Configuration.t()} | {:error, Changeset.t()}
+  def get_driver_config(url) do
+    Configuration.new(%{base_url: url})
   end
-
-  defp process_changeset(%Changeset{valid?: true} = changeset),
-    do: {:ok, Changeset.apply_changes(changeset)}
-
-  defp process_changeset(changeset), do: {:error, changeset}
 end
