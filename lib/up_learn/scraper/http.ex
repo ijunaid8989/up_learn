@@ -19,7 +19,7 @@ defmodule UpLearn.HTTP do
         parsed_json
 
       {:error, reason} ->
-        # :ok = LOG.error(message: "error parsing json", error: "#{inspect(reason)}")
+        :ok = Logger.debug(fn -> "error parsing json: #{inspect(reason)}" end)
         json
     end
   end

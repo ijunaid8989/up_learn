@@ -1,6 +1,6 @@
 defmodule UpLearn.Scraper.Driver.Get do
   @moduledoc """
-  Fetch Driver.
+  Get Driver.
   """
 
   alias UpLearn.Scraper.Driver
@@ -9,7 +9,7 @@ defmodule UpLearn.Scraper.Driver.Get do
   @type driver_config :: UpLearn.Provider.Configuration.t()
 
   @doc """
-  Fetches data from provider URL.
+  Get data from provider URL.
   """
   @callback get_data(driver_config) :: Driver.response()
 end

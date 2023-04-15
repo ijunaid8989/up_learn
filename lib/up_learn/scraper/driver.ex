@@ -25,8 +25,6 @@ defmodule UpLearn.Scraper.Driver do
 
       @doc false
       def dispatch_driver_event(event, meta \\ %{}) do
-        IO.inspect(event)
-
         :telemetry.execute(
           [:driver | event],
           %{count: 1},
@@ -42,7 +40,6 @@ defmodule UpLearn.Scraper.Driver do
           ssl: [{:versions, [:"tlsv1.2"]}]
         ]
         |> Keyword.merge(:maps.to_list(config.ext[:http_options] || %{}))
-        |> IO.inspect()
       end
     end
   end

@@ -21,12 +21,12 @@ defmodule UpLearn.Scraper.Drivers.Page do
   def get_data(%{base_url: base_url} = config) do
     with {:ok, response} <- Client.get(base_url, [], http_otps(config)) do
       status = get_status_from_response(response)
-      :ok = dispatch_info(status, response)
+      :ok = dispatch_info(status, response.body)
       {:ok, Response.new(response, status)}
     else
-      {_, response} ->
+      {:error, response} ->
         status = get_status_from_response(response)
-        :ok = dispatch_info(status, response)
+        :ok = dispatch_info(status, response.reason)
         {:error, {:unexpected_response, response}}
     end
   end
@@ -37,7 +37,7 @@ defmodule UpLearn.Scraper.Drivers.Page do
     dispatch_driver_event(
       [:fetch, :status],
       %{
-        body: response.body,
+        body: response,
         status: status
       }
     )
