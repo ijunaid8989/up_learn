@@ -16,6 +16,8 @@ defmodule UpLearn.Scraper.Driver do
 
       import UpLearn.Scraper.Helpers
 
+      @name opts[:name] || raise(ArgumentError, "expected name: to be given as argument")
+
       @doc false
       def fetch_in!(data, keys) do
         get_in(data, keys) || raise(KeyError, key: keys, term: @name)
@@ -23,10 +25,12 @@ defmodule UpLearn.Scraper.Driver do
 
       @doc false
       def dispatch_driver_event(event, meta \\ %{}) do
+        IO.inspect(event)
+
         :telemetry.execute(
           [:driver | event],
           %{count: 1},
-          meta
+          Map.merge(meta, %{name: @name})
         )
       end
 
@@ -38,6 +42,7 @@ defmodule UpLearn.Scraper.Driver do
           ssl: [{:versions, [:"tlsv1.2"]}]
         ]
         |> Keyword.merge(:maps.to_list(config.ext[:http_options] || %{}))
+        |> IO.inspect()
       end
     end
   end
