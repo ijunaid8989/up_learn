@@ -1,21 +1,18 @@
 # UpLearn
 
-**TODO: Add description**
-
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `up_learn` to your list of dependencies in `mix.exs`:
+  1. Elixir 1.14.x
+  2. Erlang 24.x
+  3. `mix deps.get`
 
 ```elixir
-def deps do
-  [
-    {:up_learn, "~> 0.1.0"}
-  ]
-end
-```
+Interactive Elixir (1.14.4) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> UpLearn.fetch("https://somerandome.url/api/details)
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/up_learn>.
+%UpLearn.ParsedDocument{
+  assets: [...],
+  links: [...]
+}
+```
 
